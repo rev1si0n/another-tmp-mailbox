@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+    tmpmail:
+        image: tmpmail
+        container_name: tmpmail
+        command: ["python3", "-u", "/usr/local/tmpmail/main.py", "-port=8080", "-domain=YOUR.DOMAIN"]
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+            - /data/tmpmail:/tmpmail:rw
+        ports:
+            - "0.0.0.0:25:25"
+            - "127.0.0.1:8080:8080"
+        environment:
+            - TZ=Asia/Shanghai

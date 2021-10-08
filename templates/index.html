@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+         <!-- https://github.com/rev1si0n/another-tmp-mailbox -->
+  <meta charset="UTF-8" /> 
+  <title>临时邮箱</title> 
+  <link rel="stylesheet" href="static/css/semantic.min.css" />
+  <link rel="stylesheet" href="static/css/Semantic-UI-Alert.css">
+  <link rel="stylesheet" href="static/css/app.css" /> 
+ </head> 
+ <body> 
+  <div class="ui fixed borderless menu"> 
+   <div class="ui text container" style="max-width: 100% !important;"> 
+    <div href="#" class="header item"> 
+     <i style="font-size: 2.4em" class="paper plane outline icon"></i>临时邮箱 
+    </div> 
+    <div class="ui label item right floated mailaddress" style="width: 35%;"> 
+     <div class="ui icon input copyable" data-clipboard-text="邮箱分配中">
+      <input id="address" type="text" placeholder="正在分配临时邮箱" disabled="" />
+      <i id="rss-link" class="rss square icon right link copyable" style="font-size: 1.37em;" data-clipboard-text="复制失败"></i>
+     </div> 
+     <i id="releaseAddress" style="margin-left: 0.5em; font-size: 1.37em;" class="link trash alternate outline icon"></i> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="ui main container" style="width: 75%"> 
+   <div class="ui grid"> 
+    <div class="row"> 
+     <div class="column"> 
+      <table class="ui celled selectable table"> 
+       <thead> 
+        <tr> 
+         <th>发信人</th> 
+         <th>主题</th> 
+         <th>时间</th> 
+        </tr> 
+       </thead> 
+       <tbody id="maillist"> 
+       </tbody> 
+      </table> 
+     </div> 
+    </div> 
+    <div class="row"> 
+     <div class="column"> 
+      <div class="ui card" id="mailcard"> 
+       <div class="content"> 
+	<a id="newtab" href="#"><i class="envelope open outline icon right floated"></i></a>
+        <div id="subject" class="header">
+	  README
+        </div> 
+       </div> 
+       <div id="content" class="content">
+	 <iframe frameborder="0" scrolling="no" height="100%" width="100%" id="content-iframe" sandbox="allow-same-origin allow-popups" src="/intro"></iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script> var DOMAIN = "{{domain}}"; </script>
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/semantic.min.js"></script>
+  <script src="static/js/Semantic-UI-Alert.js"></script>
+  <script src="static/js/clipboard.min.js"></script>
+  <script src="static/js/mail.js"></script>
+ </body>
+</html>

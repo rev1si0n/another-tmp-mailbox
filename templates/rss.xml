@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <channel>
+        <title>{{user.uuid}}@{{domain}}</title>
+        {% for mail in user.mail.limit(16) %}
+        <item>
+	<title><![CDATA[{{mail.subject}}]]></title>
+	<pubDate>{{mail.create_time.strftime("%a, %d %b %Y %H:%M:%S")}} {{tz}}</pubDate>
+        <link>https://{{server}}/mail/{{user.uuid}}/{{mail.id}}/show</link>
+	<description>{{mail.sender}}</description>
+        </item>
+        {% end %}
+        </channel>
+</rss>
