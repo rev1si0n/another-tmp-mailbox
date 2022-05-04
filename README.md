@@ -17,10 +17,22 @@
 
 ### 如何自己部署
 
+进行之前，请先确保云服务厂商允许25端口入站以及安全组/防火墙设置运行了25端口。
+目前已知情况，阿里云的服务器默认25端口可以入站，所以你只需要将安全组设置运行25端口TCP即可。
+
+随后，编辑要绑定域名的DNS解析记录，假设域名为 example.com
+
+新建解析 (A)，主机记录 @，记录值填写为云服务器的IP。
+新建解析 (MX)，主机记录 @，记录值 example.com，MX优先级默认
+
+这样，你已经完成了域名相关的配置，随后进入云服务器进行以下操作。
+
 ```bash
-# cd 到本文件夹
+# cd 到源码文件夹
 $ docker build -t tmpmail .
-# 等待结束，随后自行修改下方 yaml 中的 domain 及相关端口配置（还要确保域名的TXT/MX记录正确解析）
+# 等待结束，随后自行修改下方 yaml 中的 domain 及相关端口配置
+# 找到 ["python3", "-u", "/usr/local/tmpmail/main.py", "-port=8080", "-domain=YOUR.DOMAIN"]
+# 将 8080 修改为你想要的端口（用来web访问），将 YOUR.DOMAIN 修改为你的域名，随后启动即可
 $ docker-compose -f docker-compose.yaml up -d
 ```
 
